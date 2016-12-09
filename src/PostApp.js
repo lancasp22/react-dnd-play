@@ -43,11 +43,10 @@ class PostApp extends Component {
     return (
       <div>
         <p>
-          <b><a href='https://github.com/gaearon/react-dnd/tree/master/examples/04%20Sortable/Cancel%20on%20Drop%20Outside'>Browse the Source</a></b>
-        </p>
-        <p>
           Because you write the logic instead of using the readymade components, you can tweak the behavior to the one your app needs.
-          In this example, instead of moving the post inside the drop target's <code>drop()</code> handler, we do it inside the drag source's <code>endDrag()</code> handler. This let us check <code>monitor.didDrop()</code> and revert the drag operation if the post was dropped outside its container.
+          In this example, we move the post inside the drop target's <code>drop()</code> handler. 
+          We could do it inside the drag source's <code>endDrag()</code> handler if we were using the hover code as this would let us check <code>monitor.didDrop()</code> and revert the drag operation if the post was dropped outside its container.
+          The first 2 lists are sortable. The 3rd list isn't sortable but its contents can be dragged onto either of the first 2 lists.
         </p>
         <PostContainer posts={photoPosts} group="photo" dropGroups={["photo", "post"]}/>
         <PostContainer posts={peoplePosts} group="person" dropGroups={["person", "post"]}/>
