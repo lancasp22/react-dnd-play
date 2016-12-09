@@ -9,8 +9,6 @@ class PostApp extends Component {
       [{id: 1, text: 'Amy 1', slug: 'amy-photo1'},
        {id: 2, text: 'Amy 2', slug: 'amy-photo2'},
        {id: 3, text: 'Amy 3', slug: 'amy-photo3'},
-       {id: 4, text: 'Amy 4', slug: 'amy-photo4'},
-       {id: 5, text: 'Amy 5', slug: 'amy-photo5'},
        {id: 6, text: 'Amy 6', slug: 'amy-photo6'},
        {id: 7, text: 'Amy 7', slug: 'amy-photo7'}
       ];
@@ -18,8 +16,6 @@ class PostApp extends Component {
     let peoplePosts = 
       [{id: 11, text: 'amy', slug: 'amy'},
        {id: 12, text: 'pauline', slug: 'pauline'},
-       {id: 13, text: 'stephen', slug: 'stephen'},
-       {id: 14, text: 'laura', slug: 'laura'},
        {id: 15, text: 'roy', slug: 'roy'},
        {id: 16, text: 'ernest', slug: 'ernest'}
       ];

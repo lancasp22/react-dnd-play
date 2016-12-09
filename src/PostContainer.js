@@ -29,20 +29,29 @@ class PostContainer extends Component {
     };
   }
 
-  movePost(dragIndex, hoverIndex) {
+  movePost(item, props) {
     const { posts } = this.state;
-    const dragPost = posts[dragIndex];
 
-    // posts.splice(dragIndex, 0, posts.splice(hoverIndex, 1)[0]);
+    // posts.splice(item.index, 0, posts.splice(props.index, 1)[0]);
 
-    this.setState(update(this.state, {
-      posts: {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, dragPost]
-        ]
-      }
-    }));
+    // dragging within the same list, i.e. sorting
+    if (item.group === props.group) {
+      const dragPost = posts[item.index];
+      this.setState(update(this.state, {
+        posts: {
+          $splice: [
+            [item.index, 1],
+            [props.index, 0, dragPost]
+          ]
+        }
+      }));
+    } else {
+      this.setState(update(this.state, {
+        posts: {
+          $splice: [[props.index, 0, item.post]]
+        }
+      }));
+    }
   }
   // findPost(id) {
   //   const { posts } = this.state;
@@ -63,10 +72,8 @@ class PostContainer extends Component {
         {posts.map((post, i) => {
           return (
             <Post key={post.id}
-                  id={post.id}
+                  post={post}
                   index={i}
-                  text={post.text}
-                  slug={post.slug}
                   movePost={this.movePost}
                   group={this.props.group}
                   dropGroups={this.props.dropGroups}

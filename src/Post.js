@@ -22,7 +22,7 @@ const Types = {
 const postSource = {
   beginDrag(props) {
     // Return the data describing the dragged item
-    const item = { id: props.id, index:props.index };
+    const item = { post: props.post, index:props.index, group: props.group };
     return item;
   },
 
@@ -91,7 +91,7 @@ const postTarget = {
     // Arguments are props, TargetMonitor, DragDropContainer
     // props are the props of the component that we dropped onto.
     const item = monitor.getItem();
-    props.movePost(item.index, props.index);
+    props.movePost(item, props);
   }
 };
 
@@ -119,15 +119,16 @@ function getDropTypes(props) {
 class Post extends Component {
 
   render() {
-    const { id } = this.props;
-    // These two props are injected by React DnD,
+    // These props are injected by React DnD,
     // as defined by your `collect` function above:
     const { isDragging, connectDragSource, connectDropTarget } = this.props;
 
+    let post = this.props.post;
+
     return connectDragSource(connectDropTarget(
       <div style={{ ...style}}>
-        {this.props.group} {this.props.text}
-        {this.props.id && isDragging && ' (and I am being dragged now)'}
+        {this.props.group} {post.text}
+        {post.id && isDragging && ' (and I am being dragged now)'}
       </div>
     ));
   }
