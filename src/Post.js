@@ -110,6 +110,11 @@ function collect(connect, monitor) {
     isDragging: monitor.isDragging()
   };
 }
+
+function getType(props) {
+  return props.group;
+}
+
 class Post extends Component {
 
   render() {
@@ -128,8 +133,8 @@ class Post extends Component {
 }
 
 export default flow(
-  DragSource(Types.POST, postSource, collect),
-  DropTarget(Types.POST, postTarget, connect => ({
+  DragSource(getType, postSource, collect),
+  DropTarget(getType, postTarget, connect => ({
     connectDropTarget: connect.dropTarget()}))
   
 )(Post)
