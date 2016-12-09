@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import ItemTypes from './ItemTypes';
 import { DragSource, DropTarget } from 'react-dnd';
 import { flow } from 'lodash';
 
@@ -121,7 +120,7 @@ class Post extends Component {
 
     return connectDragSource(connectDropTarget(
       <div style={{ ...style}}>
-        {this.props.text}
+        {this.props.group} {this.props.text}
         {this.props.id && isDragging && ' (and I am being dragged now)'}
       </div>
     ));

@@ -5,34 +5,43 @@ import { DragDropContext } from 'react-dnd';
 
 class PostApp extends Component {
   render() {
-    let sourcePosts = 
-      [{id: 1, text: 'Write a cool JS library', slug: 'amy-photo1'},
-       {id: 2, text: 'Make it generic enough', slug: 'amy-photo2'},
-       {id: 3, text: 'Write README', slug: 'amy-photo3'},
-       {id: 4, text: 'Create some examples', slug: 'amy-photo1', slug: 'amy-photo4'},
-       {id: 5, text: 'Spam in Twitter and IRC to promote it', slug: 'amy-photo5'},
-       {id: 6, text: '???', slug: 'amy-photo6'},
-       {id: 7, text: 'PROFIT', slug: 'amy-photo7'}
+    let photoPosts = 
+      [{id: 1, text: 'Amy 1', slug: 'amy-photo1'},
+       {id: 2, text: 'Amy 2', slug: 'amy-photo2'},
+       {id: 3, text: 'Amy 3', slug: 'amy-photo3'},
+       {id: 4, text: 'Amy 4', slug: 'amy-photo4'},
+       {id: 5, text: 'Amy 5', slug: 'amy-photo5'},
+       {id: 6, text: 'Amy 6', slug: 'amy-photo6'},
+       {id: 7, text: 'Amy 7', slug: 'amy-photo7'}
       ];
 
-    let targetPosts = 
-      [{id: 1, text: 'Target post 1', slug: 'amy-photo8'},
-       {id: 2, text: 'Target post 2', slug: 'amy-photo9'},
-       {id: 3, text: 'Target post 3', slug: 'amy-photo10'},
-       {id: 4, text: 'Target post 4', slug: 'amy-photo11'},
-       {id: 5, text: 'Target post 5', slug: 'amy-photo12'},
-       {id: 6, text: 'Target post 6', slug: 'amy-photo13'},
-       {id: 7, text: 'Target post 7', slug: 'amy-photo14'}
+    let peoplePosts = 
+      [{id: 11, text: 'amy', slug: 'amy'},
+       {id: 12, text: 'pauline', slug: 'pauline'},
+       {id: 13, text: 'stephen', slug: 'stephen'},
+       {id: 14, text: 'laura', slug: 'laura'},
+       {id: 15, text: 'roy', slug: 'roy'},
+       {id: 16, text: 'ernest', slug: 'ernest'}
       ];
 
-    let otherPosts = 
-      [{id: 21, text: 'Other post 1', slug: 'amy-photo15'},
-       {id: 22, text: 'Other post 2', slug: 'amy-photo16'},
-       {id: 23, text: 'Other post 3', slug: 'amy-photo17'},
-       {id: 24, text: 'Other post 4', slug: 'amy-photo18'},
-       {id: 25, text: 'Other post 5', slug: 'amy-photo19'},
-       {id: 26, text: 'Other post 6', slug: 'amy-photo20'},
-       {id: 27, text: 'Other post 7', slug: 'amy-photo21'}
+    let allPosts = 
+      [{id: 1, text: 'Amy 1', slug: 'amy-photo1'},
+       {id: 2, text: 'Amy 2', slug: 'amy-photo2'},
+       {id: 3, text: 'Amy 3', slug: 'amy-photo3'},
+       {id: 4, text: 'Amy 4', slug: 'amy-photo4'},
+       {id: 5, text: 'Amy 5', slug: 'amy-photo5'},
+       {id: 6, text: 'Amy 6', slug: 'amy-photo6'},
+       {id: 7, text: 'Amy 7', slug: 'amy-photo7'},
+       {id: 11, text: 'amy', slug: 'amy'},
+       {id: 12, text: 'pauline', slug: 'pauline'},
+       {id: 13, text: 'stephen', slug: 'stephen'},
+       {id: 14, text: 'laura', slug: 'laura'},
+       {id: 15, text: 'roy', slug: 'roy'},
+       {id: 16, text: 'ernest', slug: 'ernest'},
+       {id: 21, text: 'where did you meet?', slug: 'prompt-1'},
+       {id: 22, text: 'how did he propose?', slug: 'prompt-2'},
+       {id: 23, text: 'add more photos', slug: 'prompt-3'},
+       {id: 24, text: 'add a person', slug: 'prompt-3'}
       ];
 
     return (
@@ -44,9 +53,9 @@ class PostApp extends Component {
           Because you write the logic instead of using the readymade components, you can tweak the behavior to the one your app needs.
           In this example, instead of moving the post inside the drop target's <code>drop()</code> handler, we do it inside the drag source's <code>endDrag()</code> handler. This let us check <code>monitor.didDrop()</code> and revert the drag operation if the post was dropped outside its container.
         </p>
-        <PostContainer posts={sourcePosts} group="source" />
-        <PostContainer posts={targetPosts} group="target" />
-        <PostContainer posts={otherPosts}  group="other" />
+        <PostContainer posts={photoPosts} group="photo" />
+        <PostContainer posts={peoplePosts} group="person" />
+        <PostContainer posts={allPosts}  group="post" />
       </div>
     );
   }

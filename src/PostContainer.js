@@ -3,7 +3,6 @@ import update from 'react/lib/update';
 import Post from './Post';
 import { DropTarget, DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import ItemTypes from './ItemTypes';
 import { flow } from 'lodash';
 
 const style = {
@@ -69,6 +68,7 @@ class PostContainer extends Component {
                   text={post.text}
                   slug={post.slug}
                   movePost={this.movePost}
+                  group={this.props.group}
             />
           );
         })}
