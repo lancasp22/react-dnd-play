@@ -92,9 +92,6 @@ const postTarget = {
     // props are the props of the component that we dropped onto.
     const item = monitor.getItem();
     props.movePost(item.index, props.index);
-    console.log("DROPPED");
-    console.log(item);
-    console.log(props);
   }
 };
 
@@ -111,8 +108,12 @@ function collect(connect, monitor) {
   };
 }
 
-function getType(props) {
+function getDragType(props) {
   return props.group;
+}
+
+function getDropTypes(props) {
+  return props.dropGroups || props.group;
 }
 
 class Post extends Component {
@@ -133,8 +134,8 @@ class Post extends Component {
 }
 
 export default flow(
-  DragSource(getType, postSource, collect),
-  DropTarget(getType, postTarget, connect => ({
+  DragSource(getDragType, postSource, collect),
+  DropTarget(getDropTypes, postTarget, connect => ({
     connectDropTarget: connect.dropTarget()}))
   
 )(Post)

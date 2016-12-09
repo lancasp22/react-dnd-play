@@ -53,9 +53,9 @@ class PostApp extends Component {
           Because you write the logic instead of using the readymade components, you can tweak the behavior to the one your app needs.
           In this example, instead of moving the post inside the drop target's <code>drop()</code> handler, we do it inside the drag source's <code>endDrag()</code> handler. This let us check <code>monitor.didDrop()</code> and revert the drag operation if the post was dropped outside its container.
         </p>
-        <PostContainer posts={photoPosts} group="photo" />
-        <PostContainer posts={peoplePosts} group="person" />
-        <PostContainer posts={allPosts}  group="post" />
+        <PostContainer posts={photoPosts} group="photo" dropGroups={["photo", "post"]}/>
+        <PostContainer posts={peoplePosts} group="person" dropGroups={["person", "post"]}/>
+        <PostContainer posts={allPosts}  group="post" dropGroups={[]} />
       </div>
     );
   }

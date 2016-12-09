@@ -69,6 +69,7 @@ class PostContainer extends Component {
                   slug={post.slug}
                   movePost={this.movePost}
                   group={this.props.group}
+                  dropGroups={this.props.dropGroups}
             />
           );
         })}
