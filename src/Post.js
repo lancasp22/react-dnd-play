@@ -36,6 +36,9 @@ const postSource = {
     const dropResult = monitor.getDropResult();
     console.log("END DRAG ")
     console.log(item, dropResult)
+    if (dropResult.remove) {
+      props.deletePost(item);
+    }
   }
 };
 
@@ -91,7 +94,7 @@ const postTarget = {
     // Arguments are props, TargetMonitor, DragDropContainer
     // props are the props of the component that we dropped onto.
     const item = monitor.getItem();
-    props.movePost(item, props);
+    return props.movePost(item, props);
   }
 };
 

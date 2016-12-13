@@ -50,7 +50,7 @@ class PostApp extends Component {
         </p>
         <PostContainer posts={photoPosts} group="photo" dropGroups={["photo", "post"]}/>
         <PostContainer posts={peoplePosts} group="person" dropGroups={["person", "post"]}/>
-        <PostContainer posts={allPosts}  group="post" dropGroups={[]} />
+        <PostContainer posts={allPosts}  group="post" dropGroups={["photo", "person"]} />
       </div>
     );
   }

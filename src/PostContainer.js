@@ -23,16 +23,30 @@ class PostContainer extends Component {
   constructor(props) {
     super(props);
     this.movePost = this.movePost.bind(this);
+    this.deletePost = this.deletePost.bind(this);
     // this.findPost = this.findPost.bind(this);
     this.state = {
       posts: props.posts
     };
   }
 
+  deletePost(item) {
+    this.setState(update(this.state, {
+        posts: {
+          $splice: [
+            [item.index, 1]
+          ]
+        }
+      }
+    ));
+  }
+
   movePost(item, props) {
     const { posts } = this.state;
 
-    // posts.splice(item.index, 0, posts.splice(props.index, 1)[0]);
+    if (props.group === 'post') {
+      return {remove: true};
+    }
 
     // dragging within the same list, i.e. sorting
     if (item.group === props.group) {
@@ -75,6 +89,7 @@ class PostContainer extends Component {
                   post={post}
                   index={i}
                   movePost={this.movePost}
+                  deletePost={this.deletePost}
                   group={this.props.group}
                   dropGroups={this.props.dropGroups}
             />
